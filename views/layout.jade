@@ -4,8 +4,8 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(type='text/javascript').
-        if (data) {
-            console.log(data)
-        }
+        console.log('init')
   body
     block content
+    if data
+        p has data

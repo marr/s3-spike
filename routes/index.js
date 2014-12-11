@@ -1,26 +1,27 @@
 var express = require('express');
 var router = express.Router();
 var server = require('../server.js');
-var through = require('through');
-var bl = require('bl');
+
 
 /* GET home page. */
 router.get('/', function(req, res) {
-    server(null, function( stream ) {
-        if( res.err )
+	if(res.err)
+        console.error(res.err);
+
+    server(null, function(err, data) {
+        if (err) {
         	console.error(err);
-        
-        stream
-        	.pipe(bl(function(err, data) {
-        		if (err) {
-        			console.error(err);
-        		}
-        		console.log ('data from route', data);
-				res.render('index', {
-			        title: 'S3 Bucket Data',
-			        data: data
-			    });
-        	}));
+        	throw err;
+        }
+        // data is a readable stream returned from aws-sdk
+        // getObject().createReadStream
+        console.log ('data from route', data.toString());
+
+		res.render('index', {
+	        title: 'S3 Bucket Data',
+	        data: data.length
+	    });
+     
     });
 });
 

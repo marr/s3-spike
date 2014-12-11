@@ -1,10 +1,10 @@
 var AWS = require('aws-sdk');
-
-module.exports = function() {
-	// var params = {
-	// 	Bucket: "phormat",
-	// 	Key: "spikes/"
-	// };
+require('es6-shim');
+module.exports = function(config) {
+	var params = Object.assign({
+		Bucket: "phormat",
+		Key: "spikes/"
+	}, config);
 
 	var s3 = new AWS.S3({
 		"logger": process.stdout
