@@ -17,3 +17,9 @@ var params = {
 };
 ```
 Replace these with a bucket and key (directory) for your S3 bucket.
+
+Install and run
+```
+npm install
+DEBUG=s3-spike bin/www
+```
