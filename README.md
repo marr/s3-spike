@@ -1,5 +1,6 @@
 s3-spike
 ========
+
 Create a file in the root named `s3config.json`. 
 Add s3 connection data like so:
 ```
