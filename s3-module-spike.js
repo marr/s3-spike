@@ -1,14 +1,16 @@
 var AWS = require('aws-sdk');
 require('es6-shim');
 
-module.exports = function(config, callback) {
-    var params = Object.assign({
-        Bucket: "phormat",
-        Key: "spikes/react-drag/index.html"
-    }, config);
+AWS.config.loadFromPath('./s3config.json');
 
-    var s3 = new AWS.S3({
-        "logger": process.stdout
-    });
-    return s3.getObject(params);
+var s3 = new AWS.S3({
+    "logger": process.stdout
+});
+
+module.exports = function(config) {
+    config = Object.assign({
+        Bucket: "phormat"
+    }, config);
+    return s3.listObjects(config);
 };
+
