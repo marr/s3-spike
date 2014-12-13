@@ -10,5 +10,5 @@ module.exports = function(config, callback) {
     var s3 = new AWS.S3({
         "logger": process.stdout
     });
-    return s3.getObject(params);
+    return s3.getObject(params, callback);
 };
