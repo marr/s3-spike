@@ -10,11 +10,8 @@ router.get('/', function(req, res, next) {
     if(res.err)
         console.error(res.err);
 
-    var spike = new s3object();
-
-    spike
-        .createReadStream()
-        .pipe(res);
+    s3object()
+        .createReadStream().pipe(res);
 
     //next();
 });
