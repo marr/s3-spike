@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var phormat = require('../s3-module-spike');
+var phormat = require('..');
 
 var bl = require('bl');
 var parser = require('xml2json');
